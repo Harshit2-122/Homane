@@ -1,0 +1,89 @@
+/* ==========================================================================
+   DESIGN TOKENS
+   Theme: "Ledger" — a working notebook, not a startup gradient.
+   Ink and stone-paper as the base; ochre-amber as the single working accent;
+   a highlighter-yellow marker reserved for one honest emphasis move.
+   One dark "workshop" section breaks the rhythm on purpose.
+   ========================================================================== */
+
+:root{
+  /* -- surface -- */
+  --paper:        #F8F4EE;
+  --paper-deep:    #F1E8DD;
+  --card:          #FFFDF9;
+
+  /* -- ink -- */
+  --ink:           #171C22;
+  --ink-soft:      #2B343C;
+  --slate:         #59626D;
+  --line:          #D9CDBB;
+  --line-soft:     #EADFCE;
+
+  /* -- accent: one working color, used with intent -- */
+  --amber:         #A45D2A;
+  --amber-deep:    #7E4418;
+  --amber-tint:    #E9CBA4;
+  --marker:        #EBCF5D;
+
+  /* -- dark workshop section -- */
+  --dark:          #111A22;
+  --dark-line:     #2D3942;
+  --dark-fg:       #F4F0EA;
+  --dark-fg-muted: #AAB5BD;
+
+  --white:         #FCFAF6;
+
+  /* -- type -- */
+  --font-display: 'Fraunces', serif;
+  --font-body:    'Karla', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* -- shape: intentionally uneven radii, not a uniform system -- */
+  --radius-a: 7px 3px 8px 4px;
+  --radius-b: 3px 8px 4px 7px;
+
+  /* -- motion -- */
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(166, 94, 38, 0.08), transparent 30%),
+    linear-gradient(180deg, var(--paper) 0%, #f3eee7 100%);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.62;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3{ margin: 0; }
+p{ margin: 0; }
+a{ color: inherit; }
+button{ font: inherit; }
+
+::selection{ background: var(--marker); color: var(--ink); }
+
+:focus-visible{
+  outline: 2.5px solid var(--amber);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+img, svg{ display: block; max-width: 100%; }
+
+.wrap{
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+@media (max-width: 480px){
+  .wrap{ padding: 0 20px; }
+}

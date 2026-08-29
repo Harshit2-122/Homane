@@ -1,0 +1,169 @@
+/* ==========================================================================
+   SECTIONS
+   ========================================================================== */
+
+/* ---------- HERO ---------- */
+section.hero{
+  padding: 110px 32px 90px; overflow: hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0));
+}
+.hero-inner{
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; align-items: end;
+}
+.eyebrow{
+  font-family: var(--font-mono); font-size: 0.78rem; color: var(--amber);
+  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 22px;
+  display: flex; align-items: center; gap: 10px;
+  transform: rotate(-0.8deg); transform-origin: left center;
+}
+.eyebrow::before{ content: ""; width: 26px; height: 1px; background: var(--amber); }
+h1.hero-headline{
+  display: flex; align-items: baseline; flex-wrap: nowrap; gap: 0.18em;
+  font-family: var(--font-display);
+  font-size: clamp(3.4rem, 8vw, 6.7rem); line-height: 0.94; font-weight: 600;
+  margin: 0 0 0 -3px; letter-spacing: -0.05em;
+}
+h1.hero-headline span{ white-space: nowrap; }
+h1.hero-headline em{ font-style: italic; font-weight: 500; color: var(--amber); position: relative; }
+.hero-sub-col{
+  padding: 28px 28px 18px 28px;
+  background: rgba(255,255,255,0.25);
+  border: 1px solid rgba(23, 27, 31, 0.06);
+  border-radius: 22px 10px 18px 12px;
+  box-shadow: 0 18px 40px rgba(23, 27, 31, 0.025);
+}
+.hero-sub{ font-size: 1.18rem; color: var(--slate); max-width: 40ch; margin-bottom: 34px; }
+.hero-sub strong{ color: var(--ink); font-weight: 700; }
+
+/* ---------- BELIEVE ---------- */
+section.believe{ padding: 90px 32px 110px; }
+.believe-inner{
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 0.4fr 1fr; gap: 50px;
+  align-items: start;
+}
+.believe-quote{
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem); line-height: 1.32; max-width: 24ch;
+  letter-spacing: -0.04em;
+}
+.believe-body{ margin-top: 26px; color: var(--slate); font-size: 1.05rem; max-width: 58ch; }
+
+.wwd-head h2,
+.hww-head h2,
+.contact-inner h2,
+.where-inner p.big{
+  letter-spacing: -0.04em;
+}
+
+/* ---------- WHAT WE DO ---------- */
+section.what-we-do{
+  padding: 100px 32px 110px;
+  background: var(--paper-deep);
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+.wwd-head{
+  max-width: 1180px; margin: 0 auto 56px;
+  display: grid; grid-template-columns: 0.4fr 1fr; gap: 50px;
+}
+.wwd-head h2{
+  font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.3rem);
+  font-weight: 500; margin: 0 0 16px; max-width: 20ch;
+}
+.wwd-head p{ color: var(--slate); max-width: 56ch; margin: 0; }
+.outcome-list{ max-width: 1180px; margin: 0 auto; border-top: 1px solid var(--line); }
+.outcome-hint{
+  max-width: 1180px; margin: 18px auto 0; text-align: right;
+  font-family: var(--font-mono); font-size: 0.72rem; color: var(--slate);
+}
+
+/* ---------- HOW WE WORK (dark workshop section) ---------- */
+section.how-we-work{
+  padding: 110px 32px 120px;
+  background: var(--dark);
+  color: var(--dark-fg);
+}
+.hww-head{ max-width: 1180px; margin: 0 auto 20px; text-align: center; }
+.hww-head h2{
+  font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.7rem);
+  font-weight: 500; margin: 14px 0 0; color: var(--dark-fg);
+}
+.diagram-wrap{ max-width: 1180px; margin: 60px auto 0; }
+.diagram-wrap svg{ width: 100%; height: auto; display: block; }
+.diagram-path{
+  fill: none; stroke: var(--dark-fg); stroke-width: 2.2; stroke-linecap: round;
+  stroke-dasharray: 1800; stroke-dashoffset: 1800;
+  transition: stroke-dashoffset 1.8s var(--ease);
+}
+.diagram-wrap.in-view .diagram-path{ stroke-dashoffset: 0; }
+.diagram-dot{
+  fill: var(--amber); opacity: 0; cursor: pointer;
+  transition: opacity 0.4s ease, r 0.2s ease;
+}
+.diagram-wrap.in-view .diagram-dot{ opacity: 1; transition-delay: 1.2s; }
+.diagram-dot.active{ r: 9; }
+
+.step-toggle{ margin: 34px auto 0; }
+.step-panel-wrap{ max-width: 640px; margin: 34px auto 0; text-align: center; min-height: 120px; }
+.step-panel .mono-num{ font-family: var(--font-mono); color: var(--amber); font-size: 0.85rem; }
+.step-panel h3{
+  font-family: var(--font-display); font-weight: 500; font-size: 1.5rem;
+  margin: 10px 0 10px; color: var(--dark-fg);
+}
+.step-panel p{ color: var(--dark-fg-muted); font-size: 1rem; max-width: 46ch; margin: 0 auto; }
+
+/* ---------- WHERE WE ARE ---------- */
+section.where{ padding: 100px 32px; }
+.where-inner{ max-width: 900px; margin: 0 auto; text-align: center; }
+.where-inner p.big{
+  font-family: var(--font-display); font-style: italic; font-weight: 500;
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1.5; color: var(--ink);
+}
+.where-inner p.small{ color: var(--slate); max-width: 60ch; margin: 22px auto 0; font-size: 0.98rem; }
+
+/* ---------- CONTACT ---------- */
+section.contact{ padding: 60px 32px 110px; }
+.contact-inner{
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 60px; align-items: start;
+}
+.contact-inner h2{
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; max-width: 14ch; margin: 0 0 20px;
+}
+.contact-inner .contact-note{ color: var(--slate); max-width: 40ch; }
+.contact-email{
+  display: inline-block; margin-top: 26px; font-family: var(--font-mono);
+  font-size: 0.95rem; text-decoration: underline; text-underline-offset: 4px;
+}
+
+/* ---------- FOOTER ---------- */
+footer{ border-top: 1px solid var(--line); padding: 30px 32px; }
+.footer-inner{
+  max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 14px;
+}
+.footer-inner .mono{ font-size: 0.78rem; color: var(--slate); }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px){
+  .hero-inner{ grid-template-columns: 1fr; }
+  .believe-inner, .wwd-head, .contact-inner{ grid-template-columns: 1fr; }
+  .believe-quote{ max-width: none; }
+  .outcome-head{ grid-template-columns: 42px 1fr 24px; gap: 14px; }
+  .outcome-desc{ padding-left: 56px; }
+  nav.links{ display: none; }
+  .nav-toggle{ display: block; }
+  .card{ padding: 28px; }
+}
+
+@media (max-width: 560px){
+  h1.hero-headline{ flex-wrap: wrap; gap: 0.08em; }
+}
+
+@media (max-width: 480px){
+  section.hero{ padding-top: 90px; }
+  h1.hero-headline{ margin-left: 0; }
+  section.how-we-work{ padding: 90px 20px 100px; }
+}

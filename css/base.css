@@ -1,0 +1,98 @@
+/* ==========================================================================
+   BASE — typography, texture, shared utilities
+   ========================================================================== */
+
+.display{ font-family: var(--font-display); }
+.mono{ font-family: var(--font-mono); letter-spacing: 0.04em; }
+
+/* paper grain — a light, imperfect texture instead of a flat digital fill */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* thin scroll-progress rule at the very top of the viewport */
+#scrollProgress{
+  position: fixed;
+  top: 0; left: 0;
+  height: 2.5px;
+  width: 0%;
+  background: var(--amber);
+  z-index: 900;
+  transition: width 0.1s linear;
+}
+
+.section-label{
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--slate);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: inline-block;
+  transform: rotate(-0.7deg);
+  transform-origin: left center;
+}
+.section-label.on-dark{ color: var(--dark-fg-muted); }
+
+/* hand-marked emphasis — a highlighter stroke behind text, not a plain underline */
+.marked{
+  position: relative;
+  white-space: nowrap;
+}
+.marked .mark-svg{
+  position: absolute;
+  left: -3%;
+  bottom: 0.02em;
+  width: 106%;
+  height: 0.5em;
+  z-index: -1;
+}
+.marked .mark-svg path{
+  fill: none;
+  stroke: var(--marker);
+  stroke-width: 11;
+  stroke-linecap: round;
+}
+
+/* hand-drawn rule used between a couple of sections instead of a straight hairline */
+.hand-rule{
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 14px;
+}
+.hand-rule svg{ width: 100%; height: 100%; display: block; overflow: visible; }
+.hand-rule path{
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+
+.sticky-note{
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--slate);
+  display: inline-block;
+  transform: rotate(-1.6deg);
+}
+.sticky-note::before{ content: "↳ "; color: var(--amber); }
+
+/* scroll reveal */
+.reveal{
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.in-view{ opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  .reveal{ opacity: 1; transform: none; transition: none; }
+}

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Homane favicon">
+  <rect width="64" height="64" rx="14" fill="#16201A"/>
+  <path d="M19 48V16h7.2l9.5 15.5V16H44v32h-7.3L27.2 32.5V48H19z" fill="#EDEADF"/>
+  <path d="M50 16h-7.2l-9.5 15.5V16H20v32h7.3L36.8 32.5V48H50V16z" fill="#B5701A" opacity="0.9"/>
+</svg>
