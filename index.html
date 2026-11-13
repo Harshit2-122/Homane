@@ -10,7 +10,8 @@
 <meta property="og:description" content="We diagnose the problem first and build the right solution — human judgment first, AI where it belongs.">
 <meta property="og:type" content="website">
 
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" href="assets/homane-logo.png">
+<link rel="apple-touch-icon" href="assets/homane-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Karla:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -26,6 +27,7 @@
 
 <div id="splash" aria-hidden="true">
   <div class="splash-inner">
+    <img class="splash-emblem" src="assets/homane-logo.png" alt="" width="2172" height="724" fetchpriority="high">
     <p class="splash-line brand-wordmark" id="splashLine"></p>
     <div class="splash-rule">
       <svg viewBox="0 0 60 8"><path d="M2,5 C15,1 25,7 35,3 C45,0 52,6 58,4"/></svg>
@@ -38,8 +40,11 @@
 <header class="site-nav">
   <div class="nav-inner">
     <a href="#top" class="logo" aria-label="Homane home">
-      <span class="brand-word brand-wordmark">Homane</span>
-      <span class="tag">AI with human judgment</span>
+      <img class="brand-emblem" src="assets/homane-logo.png" alt="" width="2172" height="724">
+      <span class="brand-lockup">
+        <span class="brand-word brand-wordmark">Homane</span>
+        <span class="tag">AI with human judgment</span>
+      </span>
     </a>
     <nav class="links">
       <a class="nav-link" href="#believe">What We Believe</a>
@@ -254,7 +259,10 @@
 
 <footer>
   <div class="footer-inner">
-    <span class="mono">© 2026 Homane</span>
+    <a class="footer-brand" href="#top" aria-label="Homane home">
+      <img src="assets/homane-logo.png" alt="" width="2172" height="724" loading="lazy">
+      <span class="mono">© 2026 Homane</span>
+    </a>
     <span class="mono">Diagnose → Decide → Embed</span>
   </div>
 </footer>
