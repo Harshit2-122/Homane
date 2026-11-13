@@ -234,3 +234,5 @@ form.contact-form{ display: flex; flex-direction: column; gap: 20px; }
 .form-foot{ display: flex; align-items: center; gap: 18px; margin-top: 8px; flex-wrap: wrap; }
 .form-status{ font-family: var(--font-mono); font-size: 0.82rem; color: var(--slate); }
 .form-status.success{ color: var(--amber-deep); }
+.form-status.error{ color: #B0432E; }
+.btn:disabled{ cursor: wait; opacity: 0.65; transform: none; }
