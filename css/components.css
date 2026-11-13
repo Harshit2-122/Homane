@@ -15,6 +15,7 @@
 }
 #splash.hidden{ opacity: 0; visibility: hidden; pointer-events: none; }
 .splash-inner{ text-align: center; }
+.splash-emblem{ width: min(290px, 65vw); height: auto; margin: 0 auto 32px; }
 .brand-wordmark,
 .splash-line .char{
   font-family: 'Fraunces', serif !important;
@@ -99,8 +100,16 @@ header.site-nav{
   padding: 18px 32px; max-width: 1180px; margin: 0 auto;
 }
 .logo{
-  display: inline-flex; flex-direction: column; align-items: flex-start;
-  text-decoration: none; line-height: 1; gap: 4px;
+  display: inline-flex; align-items: center;
+  text-decoration: none; line-height: 1; gap: 14px;
+}
+.brand-emblem{ width: 90px; height: auto; flex-shrink: 0; }
+.brand-lockup{ display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.footer-brand{ display: inline-flex; align-items: center; gap: 16px; text-decoration: none; }
+.footer-brand img{ width: 76px; height: auto; }
+@media (max-width: 480px){
+  .brand-emblem{ width: 68px; }
+  .logo{ gap: 10px; }
 }
 .logo .brand-word{
   font-family: var(--font-display); font-size: 1.32rem; font-weight: 600; letter-spacing: -0.03em;
