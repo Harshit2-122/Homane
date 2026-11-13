@@ -164,24 +164,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailField = document.getElementById('email');
     const messageField = document.getElementById('message');
     const countEl = document.getElementById('messageCount');
+    const submitButton = form.querySelector('button[type="submit"]');
+    let submitting = false;
+    // Keep native validation for visitors without JavaScript.
+    form.noValidate = true;
 
     messageField.addEventListener('input', () => {
       const len = messageField.value.length;
       countEl.textContent = `${len} characters`;
-      countEl.classList.toggle('warn', len > 0 && len < 20);
+      countEl.classList.toggle('warn', len > 0 && len < 10);
     });
 
     function setError(field, msg){
       const wrap = field.closest('.field');
       wrap.classList.toggle('error', Boolean(msg));
+      field.setAttribute('aria-invalid', msg ? 'true' : 'false');
       const err = wrap.querySelector('.field-error');
       if (err) err.textContent = msg || '';
     }
 
     function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (submitting) return;
+      status.classList.remove('success', 'error');
       let ok = true;
 
       if (!nameField.value.trim()) { setError(nameField, 'Tell us your name.'); ok = false; }
@@ -196,14 +203,47 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!ok) {
         status.textContent = '';
         status.classList.remove('success');
+        form.querySelector('[aria-invalid="true"]').focus();
         return;
       }
 
-      const subject = encodeURIComponent(`Project inquiry — ${nameField.value.trim()}`);
-      const body = encodeURIComponent(`${messageField.value.trim()}\n\n— ${nameField.value.trim()} (${emailField.value.trim()})`);
-      window.location.href = `mailto:hello@homane.ai?subject=${subject}&body=${body}`;
-      status.textContent = 'Opening your email client…';
-      status.classList.add('success');
+      const data = new FormData(form);
+      data.set('name', nameField.value.trim());
+      data.set('email', emailField.value.trim());
+      data.set('message', messageField.value.trim());
+      submitting = true;
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending…';
+      form.setAttribute('aria-busy', 'true');
+      status.textContent = 'Sending your message…';
+
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 20000);
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { Accept: 'application/json' },
+          signal: controller.signal
+        });
+        if (!response.ok) throw new Error('Submission failed');
+        status.textContent = 'Thanks! Your message has been submitted. We’ll be in touch.';
+        status.classList.add('success');
+        form.reset();
+        countEl.textContent = '0 characters';
+        countEl.classList.remove('warn');
+      } catch (error) {
+        status.textContent = error.name === 'AbortError'
+          ? 'Confirmation took too long. Your message may have arrived; contact homane.in@gmail.com if needed.'
+          : 'We couldn’t confirm your submission. Your message is still here—please try again or email homane.in@gmail.com.';
+        status.classList.add('error');
+      } finally {
+        clearTimeout(timeout);
+        submitting = false;
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send message';
+        form.removeAttribute('aria-busy');
+      }
     });
   })();
 });
