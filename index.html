@@ -218,32 +218,32 @@
         <p class="section-label">05 — Get in touch</p>
         <h2 style="margin-top:16px;">Tell us what your business is trying to fix.</h2>
         <p class="contact-note">No sales deck first. We’ll tell you honestly whether AI belongs in the solution, and what the smarter path looks like.</p>
-        <a class="contact-email" href="mailto: homane.in@gmail.com"> homane.in@gmail.com</a>
+        <a class="contact-email" href="mailto:homane.in@gmail.com">homane.in@gmail.com</a>
       </div>
 
       <div class="card reveal">
-        <form class="contact-form" id="contactForm" novalidate>
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xyewkjge" method="POST">
           <div class="field">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" autocomplete="name">
-            <span class="field-error"></span>
+            <input type="text" id="name" name="name" autocomplete="name" required aria-describedby="nameError">
+            <span class="field-error" id="nameError"></span>
           </div>
           <div class="field">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="email">
-            <span class="field-error"></span>
+            <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="emailError">
+            <span class="field-error" id="emailError"></span>
           </div>
           <div class="field">
             <div class="field-row">
               <label for="message">What's slowing you down?</label>
               <span class="count" id="messageCount">0 characters</span>
             </div>
-            <textarea id="message" name="message"></textarea>
-            <span class="field-error"></span>
+            <textarea id="message" name="message" required minlength="10" aria-describedby="messageCount messageError"></textarea>
+            <span class="field-error" id="messageError"></span>
           </div>
           <div class="form-foot">
             <button type="submit" class="btn">Send message</button>
-            <span class="form-status" id="formStatus"></span>
+            <span class="form-status" id="formStatus" role="status" aria-live="polite" aria-atomic="true"></span>
           </div>
         </form>
       </div>
